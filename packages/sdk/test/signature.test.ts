@@ -1,8 +1,8 @@
-import { ApiSignatureUtil } from '@beam/common'
+import { ApiSignatureUtil } from '@beampay/common'
 import { describe, expect, it } from 'vitest'
 import { verifyWebhook } from '../src/webhook.js'
 
-describe('cross-check signature with @beam/common', () => {
+describe('cross-check signature with @beampay/common', () => {
   it('produces identical HMAC signatures', async () => {
     const msg = 'test-message'
     const key = 'shared-secret'

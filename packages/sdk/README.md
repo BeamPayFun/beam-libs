@@ -1,3 +1,3 @@
-# @beam/sdk
+# @beampay/sdk
 
 BeamPay TypeScript SDK.

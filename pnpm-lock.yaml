@@ -32,7 +32,7 @@ importers:
 
   packages/common:
     dependencies:
-      '@beam/schemas':
+      '@beampay/schemas':
         specifier: workspace:*
         version: link:../schemas
     devDependencies:
@@ -78,13 +78,13 @@ importers:
 
   packages/sdk:
     dependencies:
-      '@beam/common':
+      '@beampay/common':
         specifier: workspace:*
         version: link:../common
-      '@beam/contracts-abi':
+      '@beampay/contracts-abi':
         specifier: workspace:*
         version: link:../contracts-abi
-      '@beam/schemas':
+      '@beampay/schemas':
         specifier: workspace:*
         version: link:../schemas
     devDependencies:

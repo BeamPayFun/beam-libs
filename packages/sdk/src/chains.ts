@@ -1,1 +1,1 @@
-export { CHAIN_METADATA } from '@beam/common'
+export { CHAIN_METADATA } from '@beampay/common'

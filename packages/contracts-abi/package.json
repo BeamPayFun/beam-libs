@@ -1,6 +1,8 @@
 {
-  "name": "@beam/contracts-abi",
-  "version": "0.0.1",
+  "name": "@beampay/contracts-abi",
+  "version": "0.1.0",
+  "description": "Typed viem ABI and deployment addresses for BeamRouter",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -9,6 +11,19 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeamPayFun/beam-libs.git",
+    "directory": "packages/contracts-abi"
   },
   "scripts": {
     "build": "tsup",

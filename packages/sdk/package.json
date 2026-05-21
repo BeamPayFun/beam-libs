@@ -1,6 +1,8 @@
 {
-  "name": "@beam/sdk",
-  "version": "0.0.1",
+  "name": "@beampay/sdk",
+  "version": "0.1.0",
+  "description": "Merchant SDK for BeamPay — typed router calls, webhook verification, signature helpers",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,15 +12,28 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeamPayFun/beam-libs.git",
+    "directory": "packages/sdk"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@beam/schemas": "workspace:*",
-    "@beam/common": "workspace:*",
-    "@beam/contracts-abi": "workspace:*"
+    "@beampay/schemas": "workspace:*",
+    "@beampay/common": "workspace:*",
+    "@beampay/contracts-abi": "workspace:*"
   },
   "peerDependencies": {
     "viem": "^2.21.0",

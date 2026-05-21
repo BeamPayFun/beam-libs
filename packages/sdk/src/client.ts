@@ -1,5 +1,5 @@
-import { ApiSignatureUtil, BaseResponse } from '@beam/common'
-import type { CreateOrderBody, GetOrderQuery, OrderResponse } from '@beam/schemas'
+import { ApiSignatureUtil, BaseResponse } from '@beampay/common'
+import type { CreateOrderBody, GetOrderQuery, OrderResponse } from '@beampay/schemas'
 import { Hono } from 'hono'
 import { hc } from 'hono/client'
 

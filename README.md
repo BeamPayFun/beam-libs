@@ -4,10 +4,10 @@ Monorepo for BeamPay TypeScript packages.
 
 ## Packages
 
-- `@beam/schemas` — Zod schemas shared across services
-- `@beam/common` — Utilities, error codes, and chain metadata
-- `@beam/contracts-abi` — Viem-typed ABI and deployment addresses
-- `@beam/sdk` — Client SDK and webhook verification
+- `@beampay/schemas` — Zod schemas shared across services
+- `@beampay/common` — Utilities, error codes, and chain metadata
+- `@beampay/contracts-abi` — Viem-typed ABI and deployment addresses
+- `@beampay/sdk` — Client SDK and webhook verification
 
 ## Getting Started
 
