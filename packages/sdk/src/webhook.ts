@@ -1,4 +1,4 @@
-import { ApiSignatureUtil } from '@beam/common'
+import { ApiSignatureUtil } from '@beampay/common'
 
 export interface VerifyWebhookOptions {
   signatureSalt: string

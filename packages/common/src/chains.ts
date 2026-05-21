@@ -1,4 +1,4 @@
-import type { ChainKey } from '@beam/schemas'
+import type { ChainKey } from '@beampay/schemas'
 
 export interface ChainMetadata {
   chainId: number
