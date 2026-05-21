@@ -7,11 +7,7 @@ export function validateRecvWindow(recvWindow: number): void {
   }
 }
 
-export function validateTimestamp(
-  timestamp: number,
-  serverTime: number,
-  recvWindow: number,
-): void {
+export function validateTimestamp(timestamp: number, serverTime: number, recvWindow: number): void {
   validateRecvWindow(recvWindow)
   if (!Number.isFinite(timestamp) || timestamp <= 0) {
     throw BaseResponse.create(ErrorCode.INVALID_TIMESTAMP)

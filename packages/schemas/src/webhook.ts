@@ -27,3 +27,6 @@ export const FeeRedirectWebhookBodySchema = z
     signature: z.string(),
   })
   .strict()
+
+export type PaymentWebhookBody = z.infer<typeof PaymentWebhookBodySchema>
+export type FeeRedirectWebhookBody = z.infer<typeof FeeRedirectWebhookBodySchema>

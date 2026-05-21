@@ -23,3 +23,7 @@ export const CreateOrderBodySchema = z.object({
   token: z.string().regex(/^0x[0-9a-fA-F]{40}$/),
   amount: z.string().regex(/^\d+$/),
 })
+
+export type GetOrderQuery = z.infer<typeof GetOrderQuerySchema>
+export type OrderResponse = z.infer<typeof OrderResponseSchema>
+export type CreateOrderBody = z.infer<typeof CreateOrderBodySchema>

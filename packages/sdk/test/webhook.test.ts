@@ -1,6 +1,6 @@
+import { ApiSignatureUtil } from '@beam/common'
 import { describe, expect, it, vi } from 'vitest'
 import { verifyWebhook } from '../src/webhook.js'
-import { ApiSignatureUtil } from '@beam/common'
 
 describe('verifyWebhook', () => {
   it('rejects expired recvWindow', async () => {
@@ -43,10 +43,7 @@ describe('verifyWebhook', () => {
       signature: '',
     }
     const salt = 'my-salt'
-    body.signature = await ApiSignatureUtil.sign(
-      ApiSignatureUtil.getSignatureStr(body),
-      salt,
-    )
+    body.signature = await ApiSignatureUtil.sign(ApiSignatureUtil.getSignatureStr(body), salt)
     expect(await verifyWebhook(body, { signatureSalt: salt })).toBe(true)
   })
 })

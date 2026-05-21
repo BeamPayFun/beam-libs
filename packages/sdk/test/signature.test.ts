@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest'
 import { ApiSignatureUtil } from '@beam/common'
+import { describe, expect, it } from 'vitest'
 import { verifyWebhook } from '../src/webhook.js'
 
 describe('cross-check signature with @beam/common', () => {
@@ -25,10 +25,7 @@ describe('cross-check signature with @beam/common', () => {
       signature: '',
     }
     const salt = 'webhook-secret'
-    body.signature = await ApiSignatureUtil.sign(
-      ApiSignatureUtil.getSignatureStr(body),
-      salt,
-    )
+    body.signature = await ApiSignatureUtil.sign(ApiSignatureUtil.getSignatureStr(body), salt)
     expect(await verifyWebhook(body, { signatureSalt: salt })).toBe(true)
     expect(await verifyWebhook(body, { signatureSalt: 'wrong' })).toBe(false)
   })

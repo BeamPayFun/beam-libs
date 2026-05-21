@@ -1,3 +1,4 @@
+// biome-ignore lint/complexity/noStaticOnlyClass: cross-service API surface — see CLAUDE.md "byte-identical across services"
 export class ApiSignatureUtil {
   static getSignatureStr(obj: Record<string, unknown>): string {
     const sorted = Object.keys(obj)
@@ -30,7 +31,7 @@ export class ApiSignatureUtil {
   }
 
   static async verify(message: string, signature: string, key: string): Promise<boolean> {
-    const expected = await this.sign(message, key)
+    const expected = await ApiSignatureUtil.sign(message, key)
     if (expected.length !== signature.length) return false
 
     let result = 0

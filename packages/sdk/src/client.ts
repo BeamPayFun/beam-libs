@@ -1,8 +1,7 @@
+import { ApiSignatureUtil, BaseResponse } from '@beam/common'
+import type { CreateOrderBody, GetOrderQuery, OrderResponse } from '@beam/schemas'
+import { Hono } from 'hono'
 import { hc } from 'hono/client'
-import type { Hono } from 'hono'
-import { ApiSignatureUtil } from '@beam/common'
-import type { GetOrderQuery, OrderResponse, CreateOrderBody } from '@beam/schemas'
-import { BaseResponse } from '@beam/common'
 
 function generateSalt(): string {
   return `${Date.now()}_${Math.random().toString(36).slice(2)}`
@@ -10,15 +9,9 @@ function generateSalt(): string {
 
 // Minimal app type for hc inference — mirrors beam-api routes
 const _app = new Hono()
-  .get('/v1/payment/order', (c) =>
-    c.json(BaseResponse.ok({} as OrderResponse).toJSON()),
-  )
-  .post('/v1/payment/order', (c) =>
-    c.json(BaseResponse.ok({ orderKey: '' }).toJSON()),
-  )
-  .post('/v1/webhook/payment', (c) =>
-    c.json(BaseResponse.ok({ received: true }).toJSON()),
-  )
+  .get('/v1/payment/order', (c) => c.json(BaseResponse.ok({} as OrderResponse).toJSON()))
+  .post('/v1/payment/order', (c) => c.json(BaseResponse.ok({ orderKey: '' }).toJSON()))
+  .post('/v1/webhook/payment', (c) => c.json(BaseResponse.ok({ received: true }).toJSON()))
 
 export type AppType = typeof _app
 
@@ -29,7 +22,7 @@ export class BeamPay {
   constructor({ apiUrl, secret }: { apiUrl: string; secret: string }) {
     this.secret = secret
     this.client = hc<AppType>(apiUrl, {
-      fetch: async (input, init) => {
+      fetch: async (input: RequestInfo | URL, init?: RequestInit) => {
         const url = new URL(input.toString())
         const timestamp = Date.now()
         const recvWindow = 5000
@@ -49,12 +42,14 @@ export class BeamPay {
           }
         }
 
-        const signature = await ApiSignatureUtil.sign({
+        const message = ApiSignatureUtil.getSignatureStr({
           query,
           body,
           salt,
-          secret: this.secret,
+          timestamp,
+          recvWindow,
         })
+        const signature = await ApiSignatureUtil.sign(message, this.secret)
 
         url.searchParams.set('timestamp', String(timestamp))
         url.searchParams.set('recvWindow', String(recvWindow))
@@ -70,13 +65,13 @@ export class BeamPay {
     const res = await this.client.v1.payment.order.$get({
       query: { chain, orderKey } as GetOrderQuery,
     })
-    return res.json() as Promise<ReturnType<BaseResponse<OrderResponse>['toJSON']>>
+    return (await res.json()) as ReturnType<BaseResponse<OrderResponse>['toJSON']>
   }
 
   async createOrder(body: CreateOrderBody) {
     const res = await this.client.v1.payment.order.$post({
       json: body,
     })
-    return res.json() as Promise<ReturnType<BaseResponse<{ orderKey: string }>['toJSON']>>
+    return (await res.json()) as ReturnType<BaseResponse<{ orderKey: string }>['toJSON']>
   }
 }
