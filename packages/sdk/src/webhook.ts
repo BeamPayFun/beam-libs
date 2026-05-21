@@ -1,40 +1,25 @@
 import { ApiSignatureUtil } from '@beam/common'
-import type { PaymentWebhookBody } from '@beam/schemas'
 
 export interface VerifyWebhookOptions {
-  secret: string
+  signatureSalt: string
   recvWindow?: number
 }
 
 export async function verifyWebhook(
-  req: Request,
+  body: Record<string, unknown>,
   opts: VerifyWebhookOptions,
-): Promise<PaymentWebhookBody> {
-  const body = (await req.json()) as PaymentWebhookBody
-  const { timestamp, recvWindow, salt, signature } = body
-  const now = Date.now()
-  const window = recvWindow ?? 5000
+): Promise<boolean> {
+  if (!body || typeof body !== 'object') return false
 
-  if (!Number.isFinite(timestamp) || timestamp <= 0) {
-    throw new Error('invalid timestamp')
-  }
-  if (!Number.isFinite(window) || window < 1 || window > 60_000) {
-    throw new Error('invalid recvWindow')
-  }
-  if (now - timestamp > window) {
-    throw new Error('request timeout')
-  }
+  const timestamp = body.timestamp as number | undefined
+  const recvWindow = (body.recvWindow as number | undefined) ?? opts.recvWindow ?? 5000
+  const signature = body.signature as string | undefined
 
-  const expected = await ApiSignatureUtil.sign({
-    query: undefined,
-    body,
-    salt,
-    secret: opts.secret,
-  })
+  if (typeof signature !== 'string' || signature.length === 0) return false
+  if (typeof timestamp !== 'number' || !Number.isFinite(timestamp) || timestamp <= 0) return false
+  if (!Number.isFinite(recvWindow) || recvWindow < 1 || recvWindow > 60_000) return false
+  if (Date.now() - timestamp > recvWindow) return false
 
-  if (!ApiSignatureUtil.timingSafeEqualHex(expected, signature)) {
-    throw new Error('invalid signature')
-  }
-
-  return body
+  const message = ApiSignatureUtil.getSignatureStr(body)
+  return ApiSignatureUtil.verify(message, signature, opts.signatureSalt)
 }

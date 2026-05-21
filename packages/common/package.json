@@ -12,8 +12,11 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@beam/schemas": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^8.3.5",
