@@ -1,5 +1,5 @@
 import { ApiSignatureUtil } from '@beampay/common'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { verifyWebhook } from '../src/webhook.js'
 
 describe('verifyWebhook', () => {
