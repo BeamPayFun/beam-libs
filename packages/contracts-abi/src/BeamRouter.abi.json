@@ -349,6 +349,11 @@
             "internalType": "uint256"
           },
           {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
             "name": "signer",
             "type": "address",
             "internalType": "address"
@@ -391,6 +396,25 @@
         "name": "",
         "type": "bool",
         "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "merchantReceiver",
+    "inputs": [
+      {
+        "name": "merchant",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "receiver",
+        "type": "address",
+        "internalType": "address"
       }
     ],
     "stateMutability": "view"
@@ -451,6 +475,11 @@
         "internalType": "uint256"
       },
       {
+        "name": "receiver",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
         "name": "signer",
         "type": "address",
         "internalType": "address"
@@ -469,6 +498,11 @@
     "inputs": [
       {
         "name": "merchant",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "receiver",
         "type": "address",
         "internalType": "address"
       },
@@ -595,6 +629,19 @@
     "type": "function",
     "name": "renounceGovernance",
     "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "setReceiver",
+    "inputs": [
+      {
+        "name": "newReceiver",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
     "outputs": [],
     "stateMutability": "nonpayable"
   },
@@ -733,6 +780,12 @@
         "type": "address",
         "indexed": true,
         "internalType": "address"
+      },
+      {
+        "name": "receiver",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
       }
     ],
     "anonymous": false
@@ -854,6 +907,12 @@
         "internalType": "address"
       },
       {
+        "name": "receiver",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
         "name": "token",
         "type": "address",
         "indexed": false,
@@ -888,6 +947,31 @@
         "type": "uint256",
         "indexed": false,
         "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ReceiverUpdated",
+    "inputs": [
+      {
+        "name": "merchant",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "oldReceiver",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "newReceiver",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
       }
     ],
     "anonymous": false
