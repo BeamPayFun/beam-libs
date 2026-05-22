@@ -13,6 +13,7 @@ export const OrderResponseSchema = z.object({
   amount: z.string(),
   token: z.string(),
   merchant: z.string(),
+  receiver: z.string(),
   payer: z.string().nullable(),
   status: z.enum(['pending', 'paid', 'refunded']),
 })
@@ -20,6 +21,7 @@ export const OrderResponseSchema = z.object({
 export const CreateOrderBodySchema = z.object({
   chain: ChainSchema,
   merchant: z.string().regex(/^0x[0-9a-fA-F]{40}$/),
+  receiver: z.string().regex(/^0x[0-9a-fA-F]{40}$/),
   token: z.string().regex(/^0x[0-9a-fA-F]{40}$/),
   amount: z.string().regex(/^\d+$/),
 })
