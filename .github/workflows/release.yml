@@ -1,8 +1,10 @@
 name: Release
 
 on:
-  push:
-    branches: [main]
+  # npm publish disabled — re-enable by restoring push trigger below.
+  # push:
+  #   branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
