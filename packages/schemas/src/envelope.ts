@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { AddressSchema, HexSignatureSchema } from './auth.js'
-import { ChainSchema, type ChainKey } from './chain.js'
+import { type ChainKey, ChainSchema } from './chain.js'
 import { OrderKeySchema } from './orderKey.js'
 
 const BASIS_POINTS_HARD_LIMIT = 10
