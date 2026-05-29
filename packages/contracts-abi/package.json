@@ -1,7 +1,7 @@
 {
   "name": "@beampay/contracts-abi",
   "version": "0.1.1",
-  "description": "Typed viem ABI and deployment addresses for BeamRouter",
+  "description": "Typed viem ABI and deployment addresses for BeamPayRouter",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",

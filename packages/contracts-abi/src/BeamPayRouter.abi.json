@@ -321,7 +321,7 @@
       {
         "name": "",
         "type": "tuple",
-        "internalType": "struct BeamRouter.OrderRecord",
+        "internalType": "struct BeamPayRouter.OrderRecord",
         "components": [
           {
             "name": "payer",
