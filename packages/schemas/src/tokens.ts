@@ -114,7 +114,11 @@ export function isNativeAddress(address: string): boolean {
 
 const fallbackColor = '#8b91a7'
 
-export function formatTokenAmount(rawAmount: string, decimals: number, maxFractionDigits = 2): string {
+export function formatTokenAmount(
+  rawAmount: string,
+  decimals: number,
+  maxFractionDigits = 2,
+): string {
   if (!rawAmount) return '0'
   const negative = rawAmount.startsWith('-')
   const digits = negative ? rawAmount.slice(1) : rawAmount

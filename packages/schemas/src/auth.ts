@@ -24,9 +24,9 @@ const escapeForRegex = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 export const LoginMessagePattern = new RegExp(
   [
     `^${escapeForRegex(LoginMessagePrefix)}\\n`,
-    `Address: (0x[0-9a-fA-F]{40})\\n`,
-    `Issued: (\\d+)\\n`,
-    `Expires: (\\d+)$`,
+    'Address: (0x[0-9a-fA-F]{40})\\n',
+    'Issued: (\\d+)\\n',
+    'Expires: (\\d+)$',
   ].join(''),
 )
 
@@ -58,9 +58,7 @@ export const LoginResponseSchema = z
   })
   .strict()
 
-export const AuthMeResponseSchema = z
-  .object({ address: AddressSchema })
-  .strict()
+export const AuthMeResponseSchema = z.object({ address: AddressSchema }).strict()
 
 export type LoginRequest = z.infer<typeof LoginRequestSchema>
 export type LoginResponse = z.infer<typeof LoginResponseSchema>
