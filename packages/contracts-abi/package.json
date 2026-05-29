@@ -1,6 +1,6 @@
 {
   "name": "@beampay/contracts-abi",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Typed viem ABI and deployment addresses for BeamPayRouter",
   "license": "MIT",
   "type": "module",
@@ -12,7 +12,10 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
