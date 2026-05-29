@@ -1,2 +1,2 @@
-export { BeamRouterAbi } from './BeamRouter.abi.js'
-export { BEAM_ROUTER_ADDRESSES } from './addresses.js'
+export { BeamPayRouterAbi } from './BeamPayRouter.abi.js'
+export { BEAM_PAY_ROUTER_ADDRESSES } from './addresses.js'

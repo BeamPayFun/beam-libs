@@ -1,7 +1,7 @@
 import { encodeAbiParameters, keccak256, parseAbiParameters } from 'viem'
 
 /**
- * Derive the order key that BeamRouter uses internally.
+ * Derive the order key that BeamPayRouter uses internally.
  *
  * Solidity equivalent:
  *   keccak256(abi.encode(merchant, token, amount, salt))

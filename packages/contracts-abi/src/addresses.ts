@@ -1,4 +1,4 @@
-export const BEAM_ROUTER_ADDRESSES: Record<string, string> = {
+export const BEAM_PAY_ROUTER_ADDRESSES: Record<string, string> = {
   bsc: '0x0000000000000000000000000000000000000000',
   ethereum: '0x0000000000000000000000000000000000000000',
   'bsc-testnet': '0x9690bc8df73C32b8DAA3f132012aeAFcaF112CAa',

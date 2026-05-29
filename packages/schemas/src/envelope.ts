@@ -58,7 +58,7 @@ export const ORDER_EIP712_TYPES = {
 export function buildOrderTypedData(p: OrderTypedDataInput) {
   return {
     domain: {
-      name: 'BeamRouter',
+      name: 'BeamPayRouter',
       version: '1',
       chainId: p.chainId,
       verifyingContract: p.verifyingContract,

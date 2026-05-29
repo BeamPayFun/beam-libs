@@ -19,7 +19,7 @@
 
 `packages/contracts-abi/scripts/sync-abi.ts` is a stub. A future CI step will:
 1. Download the release artifact from `beam-contracts`
-2. Overwrite `src/BeamRouter.abi.json`
+2. Overwrite `src/BeamPayRouter.abi.json`
 3. Re-run `tsup` so the `as const` TS file is rebuilt
 
 ## Signature protocol (byte-identical across services)
