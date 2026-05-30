@@ -61,6 +61,52 @@ export const BalanceSchema = z
   })
   .strict()
 
+export const MerchantStatsTotalsSchema = z
+  .object({
+    revenue: z.string(),
+    refunds: z.string(),
+    net: z.string(),
+    payCount: z.number().int().nonnegative(),
+    refundCount: z.number().int().nonnegative(),
+  })
+  .strict()
+
+export const MerchantTokenStatSchema = z
+  .object({
+    sym: z.string(),
+    chain: DashChainSchema,
+    revenue: z.string(),
+    refunds: z.string(),
+    net: z.string(),
+    payCount: z.number().int().nonnegative(),
+    refundCount: z.number().int().nonnegative(),
+  })
+  .strict()
+
+export const MerchantEventSchema = z
+  .object({
+    type: z.enum(['Payment', 'Refunded']),
+    token: z.string(),
+    chain: DashChainSchema,
+    amount: z.string(),
+    order: z.string(),
+    tx: z.string(),
+    block: z.number().int().nonnegative(),
+    age: z.string(),
+  })
+  .strict()
+
+export const MerchantStatsSchema = z
+  .object({
+    fromBlock: z.number().int().nonnegative(),
+    indexedThrough: z.number().int().nonnegative(),
+    syncedAge: z.string(),
+    totals: MerchantStatsTotalsSchema,
+    tokens: z.array(MerchantTokenStatSchema),
+    events: z.array(MerchantEventSchema),
+  })
+  .strict()
+
 export const DashKpiSetSchema = z
   .object({
     gross: KpiEntrySchema,
@@ -81,6 +127,7 @@ export const DashboardOverviewSchema = z
     peakHours: z.array(z.number()).length(24),
     recent: z.array(OrderRowSchema),
     balances: z.array(BalanceSchema),
+    merchantStats: MerchantStatsSchema,
   })
   .strict()
 
@@ -100,5 +147,9 @@ export type OrderRowStatus = z.infer<typeof OrderRowStatusSchema>
 export type OrderRow = z.infer<typeof OrderRowSchema>
 export type Balance = z.infer<typeof BalanceSchema>
 export type DashKpiSet = z.infer<typeof DashKpiSetSchema>
+export type MerchantStatsTotals = z.infer<typeof MerchantStatsTotalsSchema>
+export type MerchantTokenStat = z.infer<typeof MerchantTokenStatSchema>
+export type MerchantEvent = z.infer<typeof MerchantEventSchema>
+export type MerchantStats = z.infer<typeof MerchantStatsSchema>
 export type DashboardOverview = z.infer<typeof DashboardOverviewSchema>
 export type OrderListResponse = z.infer<typeof OrderListResponseSchema>
