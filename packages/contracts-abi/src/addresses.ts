@@ -1,5 +1,6 @@
+// Deployed via CreateX CREATE3 → one identical address on every chain. See beampay-docs ADR-0008.
 export const BEAM_PAY_ROUTER_ADDRESSES: Record<string, string> = {
-  bsc: '0x0000000000000000000000000000000000000000',
-  ethereum: '0x0000000000000000000000000000000000000000',
-  'bsc-testnet': '0x012420A017Bd1134e76C59b41B307B4f56F89e89',
+  bsc: '0xBEA93fceFb115b22a3D6c714Ee815B359e2AAbaa',
+  ethereum: '0xBEA93fceFb115b22a3D6c714Ee815B359e2AAbaa',
+  'bsc-testnet': '0xBEA93fceFb115b22a3D6c714Ee815B359e2AAbaa',
 }
