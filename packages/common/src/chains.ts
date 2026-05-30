@@ -20,4 +20,10 @@ export const CHAIN_METADATA: Record<ChainKey, ChainMetadata> = {
     explorer: 'https://etherscan.io',
     beamPayRouter: '0x0000000000000000000000000000000000000000',
   },
+  'bsc-testnet': {
+    chainId: 97,
+    name: 'BSC Testnet',
+    explorer: 'https://testnet.bscscan.com',
+    beamPayRouter: '0x0000000000000000000000000000000000000000',
+  },
 } as const
