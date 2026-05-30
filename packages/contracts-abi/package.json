@@ -1,6 +1,6 @@
 {
   "name": "@beampay/contracts-abi",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Typed viem ABI and deployment addresses for BeamPayRouter",
   "license": "MIT",
   "type": "module",
@@ -8,8 +8,14 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "files": ["dist", "README.md"],
